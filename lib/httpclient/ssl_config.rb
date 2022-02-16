@@ -288,7 +288,7 @@ class HTTPClient
 
     # interfaces for SSLSocket.
     def set_context(ctx) # :nodoc:
-      load_trust_ca unless @cacerts_loaded
+      set_default_paths unless @cacerts_loaded
       @cacerts_loaded = true
       # Verification: Use Store#verify_callback instead of SSLContext#verify*?
       ctx.cert_store = @cert_store

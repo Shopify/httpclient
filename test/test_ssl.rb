@@ -167,6 +167,8 @@ end
 
   def test_cert_store
     cfg = @client.ssl_config
+    cfg.clear_cert_store
+    cfg.load_trust_ca
     cfg.cert_store.add_cert(cert('ca.cert'))
     begin
       @client.get(@url)

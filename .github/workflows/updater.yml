@@ -1,0 +1,28 @@
+name: cacert updater
+
+on:
+  schedule:
+    - cron:  '0 12 * * 2'
+
+jobs:
+  update:
+    name: Update cacert
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: Shopify/httpclient
+          ref: shopify
+      - name: Fetch cacert
+        shell: bash
+        run: |
+          curl https://curl.se/ca/cacert.pem > ${GITHUB_WORKSPACE}/lib/httpclient/cacert.pem
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: 'Updating cacert from https://curl.se/ca/cacert.pem'
+          delete-branch: true
+          branch: update-cacert
+          title: 'Updating cacert from https://curl.se/ca/cacert.pem'
+          body: "#### Updating the cacert.pem file to the latest version\n\nA new version of the cacert.pem file has been published;\n\ncc. @Shopify/team-traffic"

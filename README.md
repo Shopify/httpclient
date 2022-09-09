@@ -1,5 +1,7 @@
 httpclient - HTTP accessing library.  [![Gem Version](https://badge.fury.io/rb/httpclient.svg)](http://badge.fury.io/rb/httpclient)
 
+This fork is due to https://shopify.engineering/that-old-certificate-expired-and-started-an-outage-this-is-what-happened-next
+
 Copyright (C) 2000-2015  NAKAMURA, Hiroshi  <nahi@ruby-lang.org>.
 
 'httpclient' gives something like the functionality of libwww-perl (LWP) in

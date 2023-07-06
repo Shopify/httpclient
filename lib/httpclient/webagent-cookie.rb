@@ -199,6 +199,9 @@ class WebAgent
           @secure = true  ## value may nil, but must 'true'.
         when 'httponly'
           @http_only = true  ## value may nil, but must 'true'.
+        when 'samesite'
+          # The SameSite attribute lets servers specify whether/when cookies are sent with cross-site requests
+          # Not in use anywhere but a known key
         else
           warn("Unknown key: #{key} = #{value}")
         end

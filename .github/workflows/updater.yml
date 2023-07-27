@@ -25,4 +25,4 @@ jobs:
           delete-branch: true
           branch: update-cacert
           title: 'Updating cacert from https://curl.se/ca/cacert.pem'
-          body: "#### Updating the cacert.pem file to the latest version\n\nA new version of the cacert.pem file has been published;\n\ncc. @Shopify/team-traffic"
+          body: "#### Updating the cacert.pem file to the latest version\n\nA new version of the cacert.pem file has been published;\n\ncc. @Shopify/edge-infrastructure"

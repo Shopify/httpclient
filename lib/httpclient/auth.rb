@@ -8,7 +8,6 @@
 
 require 'digest/md5'
 require 'httpclient/session'
-require 'mutex_m'
 
 
 class HTTPClient
@@ -232,6 +231,7 @@ class HTTPClient
     def initialize(scheme)
       @scheme = scheme
       @challenge = {}
+      @mutex = Mutex.new
     end
 
     # Resets challenge state.  Do not send '*Authorization' header until the
@@ -241,13 +241,17 @@ class HTTPClient
         @challenge.clear
       end
     end
+
+    private
+
+    def synchronize(&block)
+      @mutex.synchronize(&block)
+    end
   end
 
   # Authentication filter for handling BasicAuth negotiation.
   # Used in WWWAuth and ProxyAuth.
   class BasicAuth < AuthBase
-    include Mutex_m
-
     # Send Authorization Header without receiving 401
     attr_accessor :force_auth
 
@@ -329,8 +333,6 @@ class HTTPClient
   # Authentication filter for handling DigestAuth negotiation.
   # Used in WWWAuth.
   class DigestAuth < AuthBase
-    include Mutex_m
-
     # Creates new DigestAuth filter.
     def initialize
       super('Digest')
@@ -497,8 +499,6 @@ class HTTPClient
   #
   # NegotiateAuth depends on 'ruby/ntlm' module.
   class NegotiateAuth < AuthBase
-    include Mutex_m
-
     # NTLM opt for ruby/ntlm.  {:ntlmv2 => true} by default.
     attr_reader :ntlm_opt
 
@@ -594,8 +594,6 @@ class HTTPClient
   #
   # SSPINegotiateAuth depends on 'win32/sspi' module.
   class SSPINegotiateAuth < AuthBase
-    include Mutex_m
-
     # Creates new SSPINegotiateAuth filter.
     def initialize
       super('Negotiate')
@@ -680,8 +678,6 @@ class HTTPClient
   # http://oauth.googlecode.com/svn/spec/ext/body_hash/1.0/oauth-bodyhash.html
   #
   class OAuth < AuthBase
-    include Mutex_m
-
     class Config
       include HTTPClient::Util
 

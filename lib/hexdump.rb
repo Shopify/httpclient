@@ -1,4 +1,5 @@
 # encoding: binary
+# frozen_string_literal: false
 
 # This was written by Arai-san and published at
 # http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-list/31987

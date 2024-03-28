@@ -1,3 +1,4 @@
+# frozen_string_literal: false
 # It is useful to re-use a HTTPClient instance for multiple requests, to
 # re-use HTTP 1.1 persistent connections. 
 #

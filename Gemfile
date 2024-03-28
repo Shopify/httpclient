@@ -17,6 +17,8 @@ group :development do
   gem 'rubysspi'
   gem 'rubyntlm'
   gem 'rack-ntlm-test-service'
+  gem 'webrick'
+  gem 'base64'
 end
 
 gemspec

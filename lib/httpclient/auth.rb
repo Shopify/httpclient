@@ -1,3 +1,4 @@
+# frozen_string_literal: false
 # HTTPClient - HTTP client library.
 # Copyright (C) 2000-2015  NAKAMURA, Hiroshi  <nahi@ruby-lang.org>.
 #

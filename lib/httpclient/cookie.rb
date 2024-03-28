@@ -1,3 +1,4 @@
+# frozen_string_literal: false
 # do not override if httpclient/webagent-cookie is loaded already
 unless defined?(HTTPClient::CookieManager)
 begin # for catching LoadError and load webagent-cookie instead

@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+# frozen_string_literal: false
 require File.expand_path('helper', File.dirname(__FILE__))
 require 'tempfile'
 
@@ -597,12 +598,10 @@ EOS
     assert(called)
   end
 
-  GZIP_CONTENT = "\x1f\x8b\x08\x00\x1a\x96\xe0\x4c\x00\x03\xcb\x48\xcd\xc9\xc9\x07\x00\x86\xa6\x10\x36\x05\x00\x00\x00"
-  DEFLATE_CONTENT = "\x78\x9c\xcb\x48\xcd\xc9\xc9\x07\x00\x06\x2c\x02\x15"
-  DEFLATE_NOHEADER_CONTENT = "x\x9C\xCBH\xCD\xC9\xC9\a\x00\x06,\x02\x15"
-  [GZIP_CONTENT, DEFLATE_CONTENT, DEFLATE_NOHEADER_CONTENT].each do |content|
-    content.force_encoding('BINARY') if content.respond_to?(:force_encoding)
-  end
+  GZIP_CONTENT = "\x1f\x8b\x08\x00\x1a\x96\xe0\x4c\x00\x03\xcb\x48\xcd\xc9\xc9\x07\x00\x86\xa6\x10\x36\x05\x00\x00\x00".b
+  DEFLATE_CONTENT = "\x78\x9c\xcb\x48\xcd\xc9\xc9\x07\x00\x06\x2c\x02\x15".b
+  DEFLATE_NOHEADER_CONTENT = "x\x9C\xCBH\xCD\xC9\xC9\a\x00\x06,\x02\x15".b
+
   def test_get_gzipped_content
     @client.transparent_gzip_decompression = false
     content = @client.get_content(serverurl + 'compressed?enc=gzip')

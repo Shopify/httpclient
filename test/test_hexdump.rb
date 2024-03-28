@@ -1,4 +1,6 @@
 # -*- encoding: utf-8 -*-
+# frozen_string_literal: false
+
 require File.expand_path('helper', File.dirname(__FILE__))
 require 'hexdump'
 

@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+# frozen_string_literal: false
 require 'http-access2'
 require File.expand_path('helper', File.dirname(__FILE__))
 require 'tempfile'

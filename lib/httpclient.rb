@@ -1,3 +1,4 @@
+# frozen_string_literal: false
 # HTTPClient - HTTP client library.
 # Copyright (C) 2000-2015  NAKAMURA, Hiroshi  <nahi@ruby-lang.org>.
 #
@@ -1240,7 +1241,7 @@ private
       conn.push(res)
       return res
     end
-    content = block ? nil : ''
+    content = block ? nil : +''
     res = HTTP::Message.new_response(content, req.header)
     @debug_dev << "= Request\n\n" if @debug_dev
     sess = @session_manager.query(req, proxy)
